@@ -25,12 +25,8 @@ function ShareView({ data }: { data: SimulationData }) {
     <div className="mx-auto max-w-7xl px-4 py-8 space-y-8">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="text-xl">⚽</span>
-          <span className="text-base font-extrabold tracking-tight text-ink-900">
-            WC<span className="text-pitch-500">26</span>
-            <span className="ml-1.5 text-gold-500">Tahmin</span>
-          </span>
+        <Link href="/">
+          <img src="/wc26-logo.png" alt="WC26 Tahmin" className="h-11 w-auto" />
         </Link>
         <Link
           href="/predict"

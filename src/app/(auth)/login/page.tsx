@@ -10,12 +10,8 @@ export default async function LoginPage({
   return (
     <div className="w-full max-w-sm">
       {/* Brand mark */}
-      <div className="mb-8 text-center">
-        <span className="text-4xl">⚽</span>
-        <p className="mt-2 text-lg font-extrabold tracking-tight text-ink-900">
-          WC<span className="text-pitch-500">26</span>{" "}
-          <span className="text-gold-500">Tahmin</span>
-        </p>
+      <div className="mb-8 flex justify-center">
+        <img src="/wc26-logo.png" alt="WC26 Tahmin" className="h-16 w-auto" />
       </div>
 
       {/* Card */}

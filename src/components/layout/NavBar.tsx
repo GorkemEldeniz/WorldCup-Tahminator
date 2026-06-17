@@ -20,12 +20,8 @@ export async function NavBar() {
     <header className="sticky top-0 z-50 border-b border-line-200/80 bg-surface/80 backdrop-blur-xl">
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
         {/* Brand */}
-        <Link href="/" className="flex items-center gap-2">
-          <span className="text-xl">⚽</span>
-          <span className="text-base font-extrabold tracking-tight text-ink-900">
-            WC<span className="text-pitch-500">26</span>
-            <span className="ml-1.5 text-gold-500">Tahmin</span>
-          </span>
+        <Link href="/" className="flex items-center">
+          <img src="/wc26-logo.png" alt="WC26 Tahmin" className="h-11 w-auto" />
         </Link>
 
         {/* Right side */}
