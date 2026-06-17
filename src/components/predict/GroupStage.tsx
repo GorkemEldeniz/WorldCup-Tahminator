@@ -23,14 +23,22 @@ import type { GroupRankings } from "@/lib/worldcup/types";
 // ── Sortable team row ──────────────────────────────────────────────────────
 function SortableTeam({ teamId, rank }: { teamId: string; rank: number }) {
   const { teamMap } = useTeams();
-  const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
-    useSortable({ id: teamId });
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    setActivatorNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({ id: teamId });
   const team = teamMap[teamId];
 
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
-    opacity: isDragging ? 0.5 : 1,
+    opacity: isDragging ? 0.4 : 1,
+    zIndex: isDragging ? 10 : undefined,
   };
 
   const rankColor =
@@ -42,9 +50,7 @@ function SortableTeam({ teamId, rank }: { teamId: string; rank: number }) {
     <div
       ref={setNodeRef}
       style={style}
-      {...attributes}
-      {...listeners}
-      className="flex cursor-grab items-center gap-2 rounded-lg border border-line-200 bg-surface px-3 py-2 shadow-sm active:cursor-grabbing select-none"
+      className="flex items-center gap-2 rounded-lg border border-line-200 bg-surface px-3 py-2 shadow-sm select-none"
     >
       <span className={`w-4 shrink-0 text-center text-sm ${rankColor}`}>{rank}</span>
       {team ? (
@@ -60,7 +66,15 @@ function SortableTeam({ teamId, rank }: { teamId: string; rank: number }) {
       <span className="flex-1 truncate text-sm font-medium text-ink-900">
         {team?.shortName ?? teamId}
       </span>
-      <span className="text-ink-400 text-xs select-none">☰</span>
+      {/* Drag handle — only this element activates drag, keeps scroll free on mobile */}
+      <span
+        ref={setActivatorNodeRef}
+        {...listeners}
+        {...attributes}
+        className="touch-none cursor-grab px-1 text-base text-ink-300 active:cursor-grabbing"
+      >
+        ☰
+      </span>
     </div>
   );
 }
